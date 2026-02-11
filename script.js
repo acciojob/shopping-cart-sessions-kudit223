@@ -26,7 +26,8 @@ function renderProducts() {
 
 // Render cart list
 function renderCart() {
-    let sessionStorageCart=JSON.parse(sessionStorage.getItem('inCart'));
+    let sessionStorageCart=JSON.parse(sessionStorage.getItem('cart'));
+    console.log(sessionStorage.getItem('cart'))
     cartProductlist.innerHTML='';
     if(!sessionStorageCart) return;
     sessionStorageCart.forEach((item)=>{
@@ -40,7 +41,7 @@ function renderCart() {
 function addToCart(productId) {
     let inCart=[];
     let userSelectedProduct=products[productId-1];
-    let sessionStorageCart=JSON.parse(sessionStorage.getItem('inCart'));
+    let sessionStorageCart=JSON.parse(sessionStorage.getItem('cart'));
 
     if(sessionStorageCart){
         sessionStorageCart.forEach(item=>{
@@ -48,7 +49,8 @@ function addToCart(productId) {
     })}
     
     inCart.push(userSelectedProduct);
-    sessionStorage.setItem('inCart',JSON.stringify(inCart))
+
+    sessionStorage.setItem('cart',JSON.stringify(inCart))
     renderCart();
 }
 
